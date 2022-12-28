@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const options = {
    method: 'GET',    // Спецификатор запроса(GET - Получение данных)
    headers: {        // Заголовки(Уникальный ключ сервера хостинг клиента SHAZAM)
-      'X-RapidAPI-Key': 'c13b548139msh678298a0382443ep1b1bc3jsndc0913a3c8a3',
+      'X-RapidAPI-Key': '849ac87862msh73327d66c4c59f7p135493jsnb15500d75ab2', // Уникальный ключ который даёт 500 запросов в месяц
       'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
    }
 };
@@ -14,12 +14,13 @@ fetch('https://shazam-core.p.rapidapi.com/v1/charts/world', options)
    .then(response => console.log(response)) // Вывод в консоль полученный ответ из Shazam
    .catch(err => console.error(err)); // Вывод ошибки в консоль(обработчик)
 
+// Ядро API SHAZAM позволяющее делать различные запросы на получение данных
 export const shazamCoreApi = createApi({
    reducerPath: 'shazamCoreApi',
    baseQuery: fetchBaseQuery({
       baseUrl: 'https://shazam-core.p.rapidapi.com/v1',
       prepareHeaders: (headers) => {
-         headers.set('X-RapidAPI-Key', 'c13b548139msh678298a0382443ep1b1bc3jsndc0913a3c8a3');
+         headers.set('X-RapidAPI-Key', '849ac87862msh73327d66c4c59f7p135493jsnb15500d75ab2');
 
          return headers;
       },
